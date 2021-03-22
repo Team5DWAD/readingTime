@@ -7,7 +7,7 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
-		<title>Website Homepage Design Prototype #1</title>
+		<title>Website Category Design Prototype #1</title>
 	</head>
 	
 	<body>
@@ -20,23 +20,17 @@
 			<a href="/readingTime/signIn/" class="right">Sign In</a>
 		</div>
 		
-		<div class="poll">
-			<h3>DEVELOPER_POLL</h3>
-		</div>
-		
-		<div class="main">
-			<!--<h3>MAIN</h3> -->
-			
-			<div class="main"><ul>
-				{% if categories %}
-					{% for category in categories %}
-						<li> <div class="header" style="cursor: pointer" onclick="location.href='/readingTime/category/'">{{ category.name }}</div></li>
-					{% endfor %}
-					</ul>
-				{% else %} <strong>No categories present!</strong>
-				{% endif %}
-				</div>
-		</div>
+		<div class="main"><ul>
+			<li> <div class="header" style="cursor: pointer" onclick="location.href='/readingTime/book/'"/>BookName</div></li>
+			<li> <div class="header">BookName</div></li>
+			<li> <div class="header">BookName</div></li>
+			<li> <div class="header">BookName</div></li>
+			<li> <div class="header">BookName</div></li>
+			<li> <div class="header">BookName</div></li>
+			<li> <div class="header">BookName</div></li>
+			<li> <div class="header">BookName</div></li>
+			<li> <div class="header">BookName</div></li>
+		</ul></div>
 		
 		<div class="footer">
 			<h3>FOOTER</h3>

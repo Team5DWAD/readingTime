@@ -1,11 +1,14 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from readingTime.models import Category, Book
 
 def home(request):
-    # return HttpResponse("HOME PAGE <a href='/readingTime/signIn/'>SignIn</a>")
-    context_dict = {'message': 'ass, assa'}
-    # We look inside templates/readingTime/<view.html>
-    return render(request, 'readingTime/home.html')
+    category_list = Category.objects.all()
+    context_dict = {}
+    context_dict['categories'] = category_list
+
+    
+    return render(request, 'readingTime/home.html', context=context_dict)
 
 def signIn(request):
     # return HttpResponse("SignIn PAGE <a href='/readingTime/'>Home</a>")
@@ -14,5 +17,8 @@ def signIn(request):
 def register(request):
     return render(request,'readingTime/register.html')
                   
+def category(request):
+    return render(request,'readingTime/category.html')
 
-
+def book(request):
+    return render(request,'readingTime/book.html')

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+{% load staticfiles %}
+
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/book.css' %}" />
+		<title>Website Category Design Prototype #1</title>
+	</head>
+	
+	<body>
+		
+		<div class="navigation-bar">
+			<a href="/readingTime/">home</a>
+			<a href="#temp#">MyBooks</a>
+			<a href="#temp#" class="right">Contact Us</a>
+			<a href="/readingTime/register/" class="right">Register</a>
+			<a href="/readingTime/signIn/" class="right">Sign In</a>
+		</div>
+		
+		<div class="book"><ul>
+			<li><div class="book-cover">BookName</div></li>
+		</ul></div>
+		
+		<div class="footer">
+			<h3>FOOTER</h3>
+		</div>
+		
+	</body>
+</html>

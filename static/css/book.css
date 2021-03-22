@@ -35,64 +35,38 @@ body {
 	float: right;
 }
 
-/*DEVELOPER POLL */
-.poll {
-	padding: 120px;
-	text-align: center;
-	/* background: #15400c; (green)*/
-	background: #36454F;
-	font-family: poppins;
-}
-
-
 /* MAIN */
-.main{
+.book{
 	width:100%;
 	overflow:hidden;
 	background: #a2a0a5;
 	/*margin-top: 20px;*/
 }
 
-.main ul{
+.book ul{
 	padding: 0px;
 	margin: 0px;
 }
 
-.main ul li{
+.book ul li{
 	float: left;
 	list-style: none;
-	width:16%;
-	height:400px;
+	width:45%;
+	height:800px;
 	background: #79787a;
 	margin: 20px 0px 20px 55px;
 }
 
-.main ul li .header{
-	width: 100%;
-	height: 50px;
-	line-height: 50px;
+.book ul li .book-cover{
+	width: 60%;
+	height: 500px;
+	line-height: 600px;
 	background: #36454F;
 	text-align: center;
 	color:white;
 	font-size: 20px;
+	margin: 30px 0px 0px 30px;
 }
-
-.main ul li .header:hover {
-	background: #fff;
-	color: #333;
-}
-
-.book{
-	float: left;
-	list-style: none;
-	width:16%;
-	height:400px;
-	background: #79787a;
-	margin: 20px 0px 20px 55px;
-}
-
-
-
 
 /*FOOTER*/
 .footer {
@@ -116,14 +90,3 @@ body {
 		margin-left: 40px;
 	}
 }
-/* TODO further responsive layout...*/
-
-
-
-
-
-
-
-
-
-
