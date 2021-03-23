@@ -11,13 +11,25 @@
 	
 	<body>
 		<div class="main">
-			<form class="registration-form" action="#"> <!-- action indicates where to send the form when submitted -->	
+			{% if registered %}
+				<a href="{% url 'readingTime:home' %}">Home</a><br />
+			{% else %}
+			<!-- action indicates where to send the form when submitted -->	
+			<form id="user_form" class="registration-form" method="post" action="{% url 'readingTime:register' %}" enctype="multipart/form-data">
 				<div class="register-container">
 					<h1>Welcome new User!</h1>
 					<p>Fill out the form carefully for registration</p>
 					<hr> <!-- leaves a thin, black line before the beginning of the form-->
 					
-					<label for="email"><b>Email Address</b></label>
+					{% csrf_token %}
+					
+					{% for field in user_form %}
+						<p>
+							{{ field.label_tag }}<br>
+							{{ field }}
+						</p>
+					{% endfor %}
+					<!-- <label for="email"><b>Email Address</b></label>
 					<input type="email" placeholder="example1@company.com" name="email" required>
 					
 					<label for="firstName"><b>First Name</b></label>
@@ -40,10 +52,11 @@
 						<!-- redirects user to home page -->
 						<button type="button" class="cancel-button" onclick="location.href='/readingTime/'">Cancel</a></button>
 						<!-- submits form -->
-						<button type="submit" class="submit-button">Register</button> 
+						<button type="submit" class="submit-button" value="Register">Register</button> 
 					</div>
 				</div>
 			</form>
+			{% endif %}
 		</div>
 	</body>
 </html>

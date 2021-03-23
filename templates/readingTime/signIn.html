@@ -11,16 +11,23 @@
 	
 	<body>
 		<div class="main">
-			<form class="registration-form" action="#"> <!-- action indicates where to send the form when submitted -->	
+			<form class="registration-form" method="post" action="{% url 'readingTime:signIn' %}" enctype="multipart/form-data" ><!-- action indicates where to send the form when submitted -->	
 				<div class="register-container">
 					<h2>Sign in to ReadingTime</h2>
-					<!-- add an avatar -->
+					{% csrf_token %}
 					
+					Username: <input type="text" name="username" value="" size="50" />
+					<br />
+					Password: <input type="password" name="password1" value="" size="50" />
+					<br />
+					
+					<!--
 					<label for="Username"><b>Username</b></label>
 					<input type="text" placeholder="Enter username" name="username" required>
 					
 					<label for="password"><b>Password</b></label>
 					<input type="password" placeholder="Enter password" name="password" required>
+					-->
 					
 					<!-- Login button -->
 					<div>
