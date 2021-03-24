@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib import messages
 from django.urls import reverse
 from readingTime.models import Category, Book
 from readingTime.forms import RegisterForm
@@ -10,8 +12,10 @@ def home(request):
     context_dict = {}
     context_dict['categories'] = category_list
 
-    
-    return render(request, 'readingTime/home.html', context=context_dict)
+    if request.user.is_authenticated:
+        return render(request, 'readingTime/home_logged_in.html', context=context_dict)
+    else:
+        return render(request, 'readingTime/home.html', context=context_dict)
                   
 def category(request):
     return render(request,'readingTime/category.html')
@@ -20,11 +24,12 @@ def book(request):
     return render(request,'readingTime/book.html')
 
 def signIn(request):
-
     # If the user is already logged in (temp -> redirects back to home page)
     if request.user.is_authenticated:
             return redirect('readingTime:home')
+
     if request.method == 'POST':
+        form = AuthenticationForm(request.POST)
         username = request.POST.get('username')
         password = request.POST.get('password1')
 
@@ -32,16 +37,26 @@ def signIn(request):
         user = authenticate(username=username, password=password)
         
         # If object returned (user recognised)
-        if user:
+        if user is not None:
             if user.is_active:
                 login(request, user)
                 return redirect('readingTime:home')
             else:
                 return HttpResponse("Rango account disabled!")
         else:
-            print(f"Invalid login details: {username}, {password}")
+            # TODO message: username/password wrong
+            messages.error(request, 'Either username or password invalid! Double check')
+            return redirect('readingTime:signIn')
     else:
-        return render(request, 'readingTime/signIn.html')
+        form = AuthenticationForm()
+        
+    return render(request, 'readingTime/signIn.html', {'form': form})
+
+def logOut(request):
+    # when clicked, user logged out!
+    logout(request)
+    return redirect('readingTime:home')
+
 
 def register(request):
     registered = False
