@@ -11,9 +11,20 @@
 	
 	<body>
 		<div class="main">
+			{% if messages %}
+				{% for  message in messages %}
+					<div class="alert"> 
+						<span class="close-button" onclick="this.parentElement.style.display='none';">&times; </span>
+						<strong> {{ message }}</strong>
+					</div>
+				{% endfor %}
+			{% endif %}
+			<!--
 			{% if registered %}
 				<a href="{% url 'readingTime:home' %}">Home</a><br />
 			{% else %}
+			-->
+			
 			<!-- action indicates where to send the form when submitted -->	
 			<form id="user_form" class="registration-form" method="post" action="{% url 'readingTime:register' %}" enctype="multipart/form-data">
 				<div class="register-container">

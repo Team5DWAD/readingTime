@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.models import User
 from django.contrib import messages
 from django.urls import reverse
 from readingTime.models import Category, Book
@@ -44,7 +45,7 @@ def signIn(request):
             else:
                 return HttpResponse("Rango account disabled!")
         else:
-            # TODO message: username/password wrong
+            # message to display if login unsuccesful
             messages.error(request, 'Either username or password invalid! Double check')
             return redirect('readingTime:signIn')
     else:
@@ -66,7 +67,24 @@ def register(request):
 
         # If the forms are valid
         if user_form.is_valid():
-
+            '''
+            if User.objects.filter(email=user_form.cleaned_data['email']).exists():
+                messages.error(request, 'Form contains errors. Double check')
+                return render(request, 'readingTime/register.html', {
+                    'user_form': user_form,
+                    'error_message': 'The email provided already exists.'})
+            elif User.objects.filter(username=user_form.cleaned_data['username']).exists():
+                messages.error(request, 'Form contains errors. Double')
+                return render(request, 'readingTime/register.html', {
+                    'user_form': user_form,
+                    'error_message': 'The username provided already exists.'})
+            elif user_form.cleaned_data['password1'] != user_form.cleaned_data['password2']:
+                messages.error(request, 'Form contains errors')
+                return render(request, 'readingTime/register.html', {
+                    'user_form': user_form,
+                    'error_message': 'The passwords provided do not match.'})
+            else:
+            '''
             user = user_form.save()
             # we load our profile instance
             user.refresh_from_db()
@@ -79,19 +97,21 @@ def register(request):
             password = user_form.cleaned_data.get('password1')
             user = authenticate(username=username, password=password)
             login(request, user)
-            registered = True
-            if user:
-                return redirect('readingTime:home')
+            #registered = True
+            # if user:
+            return redirect('readingTime:home')
             
-        else:
+        #else:
             # Invalid form
+            # messages.error(request, 'Form contains errors. Double check')
             print(user_form.errors)
+            messages.error(request, 'Form contains errors. Double check')
+            # user_form = user_form.errors
             #user_form = RegisterForm()
     else:
         # Blank form since we do not have an HTTP POST
         user_form = RegisterForm()
-
-    
+        
     return render(request,'readingTime/register.html',
                   context={'user_form': user_form,
                            'registered': registered})

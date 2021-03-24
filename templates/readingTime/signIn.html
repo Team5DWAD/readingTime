@@ -15,8 +15,6 @@
 				{% for  message in messages %}
 					<div class="alert"> 
 						<span class="close-button" onclick="this.parentElement.style.display='none';">&times; </span>
-						<!-- {% if message.tags %}alert-{% if messages.tags == 'error' %}danger{% else %}{{ message.tags}}{% endif %}"{% endif %}>{{ message }} -->
-						<!-- <strong>Either username or password invalid! Double check</strong> -->
 						<strong> {{ message }}</strong>
 					</div>
 				{% endfor %}
