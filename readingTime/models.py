@@ -12,6 +12,9 @@ class Category(models.Model):
     class Meta:
         verbose_name_plural = 'Categories'
 
+    def get_books(self):
+        return Book.objects.filter(categories__title=self.title)
+
     def __str__(self):
         return self.name;
 

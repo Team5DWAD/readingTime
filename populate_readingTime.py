@@ -12,11 +12,11 @@ from readingTime.models import Category, Book
 def populate():
 
     books_fiction = [
-        {'title': 'BLBL'},
-        {'title': 'ASLD'},
-        {'title': 'ads'},
-        {'title': 'the'},
-        {'title': 'frg'}]
+        {'title': 'Fiction1'},
+        {'title': 'Fiction2'},
+        {'title': 'Fiction3'},
+        {'title': 'Fiction4'},
+        {'title': 'Fiction5'}]
 
     books_nonfiction = [
         {'title': 'NON-Fiction'},
@@ -27,14 +27,15 @@ def populate():
     
     categories = {'Fiction': {'books': books_fiction},
                   'Non-Fiction': {'books': books_nonfiction},
+                  'Science-Fiction': {'books': books_fiction},
                   'Horror': {'books': books_nonfiction},
-                  'Medieval': {'books': books_nonfiction},
-                  'A': {'books': books_nonfiction},
-                  'B': {'books': books_nonfiction},
-                  'C': {'books': books_nonfiction},
-                  'D': {'books': books_nonfiction},
-                  'E': {'books': books_nonfiction},
-                  'F': {'books': books_nonfiction}}
+                  'Fantasy': {'books': books_nonfiction},
+                  'Adventure': {'books': books_nonfiction},
+                  'Romance': {'books': books_nonfiction},
+                  'Dystopian': {'books': books_nonfiction},
+                  'Mystery': {'books': books_nonfiction},
+                  'History': {'books': books_nonfiction},
+                  'Humor': {'books': books_nonfiction}}
     # iterate through the category dictionary and add each category
     for cat, book in categories.items():
         c = add_category(cat)
@@ -51,8 +52,8 @@ def add_book(cat, title):
     b = Book.objects.get_or_create(category=cat, title=title)[0]
     b.save()
     return b
-    
-   
+
+
 # Start execution here!
 if __name__ == '__main__':
     print('Starting ReadingTime population script...')

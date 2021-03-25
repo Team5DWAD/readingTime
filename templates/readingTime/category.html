@@ -16,20 +16,26 @@
 			<a href="/readingTime/">home</a>
 			<a href="#temp#">MyBooks</a>
 			<a href="#temp#" class="right">Contact Us</a>
-			<a href="/readingTime/register/" class="right">Register</a>
-			<a href="/readingTime/signIn/" class="right">Sign In</a>
+			<!-- checks if user is logged in -->
+			{% if logged_in %}
+				<a href="/readingTime/logOut/" class="right">Sign Out</a>
+				<a href="/readingTime/signIn/" class="right">My account</a> 
+			{% else %}
+				<a href="/readingTime/register/" class="right">Register</a>
+				<a href="/readingTime/signIn/" class="right">Sign In</a>
+			{% endif %}
 		</div>
 		
 		<div class="main"><ul>
-			<li> <div class="header" style="cursor: pointer" onclick="location.href='/readingTime/book/'"/>BookName</div></li>
-			<li> <div class="header">BookName</div></li>
-			<li> <div class="header">BookName</div></li>
-			<li> <div class="header">BookName</div></li>
-			<li> <div class="header">BookName</div></li>
-			<li> <div class="header">BookName</div></li>
-			<li> <div class="header">BookName</div></li>
-			<li> <div class="header">BookName</div></li>
-			<li> <div class="header">BookName</div></li>
+			{% if books %}
+				{% for book in books %}
+					<li> 
+						<div class="header" style="cursor: pointer" onclick="location.href='/readingTime/book/'">{{ book.title }}</div>
+					</li>
+				{% endfor %}
+			</ul>
+			{% else %} <strong>No categories present!</strong>
+			{% endif %}
 		</ul></div>
 		
 		<div class="footer">
