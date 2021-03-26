@@ -27,17 +27,6 @@ body {
 	text-transform: uppercase;
 }
 
-.drop-button {
-	float: left;
-	display: block;
-	color: #fff;
-	text-align: center;
-	padding: 14px 20px;
-	text-decoration: none;
-	font-size: 20px;
-	font-family: poppins;
-	text-transform: uppercase;
-}
 
 .navigation-bar a:hover {
 	background: #fff;
@@ -116,8 +105,8 @@ img {
 
 /*FOOTER*/
 .footer {
-	padding: 150px;
-	float: left;
+	padding: 30px;
+	text-align: center;
 	background: #333;
 	font-family: poppins;
 }

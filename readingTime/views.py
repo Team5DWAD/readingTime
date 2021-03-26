@@ -12,17 +12,23 @@ def home(request):
     category_list = Category.objects.all()
     context_dict = {}
     context_dict['categories'] = category_list
-
+    
     if request.user.is_authenticated:
         context_dict['logged_in'] = True
     else:
         context_dict['logged_in'] = False
 
-    return render(request, 'readingTime/home.html', context=context_dict)
+    response = render(request, 'readingTime/home.html', context=context_dict)
+    
+    return response
                   
-def category(request):
+def category(request, category_name='Default category'):
     # we get all books which are linked to the given category name (i.e.: Fiction)
-    books_list = Book.objects.filter(category__name="Fiction")
+    category_name = str(request.get_full_path)
+    # gets the category name from the url
+    category_name = (category_name.split("?",1)[1]).replace("'>>","")
+    # gets the books stored in the given category
+    books_list = Book.objects.filter(category__name=category_name)
     
     # Checks if a user has logged in
     if request.user.is_authenticated:
@@ -31,7 +37,8 @@ def category(request):
         logged_in = False
     
     return render(request,'readingTime/category.html', context={'logged_in': logged_in,
-                                                                'books': books_list})
+                                                                'books': books_list,
+                                                                'category_name': category_name})
 
 def book(request):
     return render(request,'readingTime/book.html')

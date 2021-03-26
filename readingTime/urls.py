@@ -10,6 +10,8 @@ urlpatterns = [
     path('signIn/', views.signIn, name='signIn'),
     path('logOut/', views.logOut, name='logOut'),
     path('register/', views.register, name='register'),
+    # we use slug since we have dashes
+    path('category/<slug:category>', views.category, name='category'),
     path('category/', views.category, name='category'),
     path('book/', views.book, name='book'),
 ]

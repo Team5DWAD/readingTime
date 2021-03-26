@@ -15,6 +15,7 @@
 		<div class="navigation-bar">
 			<a href="/readingTime/">home</a>
 			<a href="#temp#">MyBooks</a>
+			<a href="#temp#">{{ category }}</a>
 			<a href="#temp#" class="right">Contact Us</a>
 			<!-- checks if user is logged in -->
 			{% if logged_in %}
@@ -34,12 +35,12 @@
 					</li>
 				{% endfor %}
 			</ul>
-			{% else %} <strong>No categories present!</strong>
+			{% else %} <strong>No books present!</strong>
 			{% endif %}
 		</ul></div>
 		
 		<div class="footer">
-			<h3>FOOTER</h3>
+			<h3>ReadingTime</h3>
 		</div>
 		
 	</body>
