@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+{% load staticfiles %}
+
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		{% block style_css %}
+		<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+		{% endblock %}
+		<title>Website Homepage Design Prototype #1</title>
+	</head>
+	
+	<body>
+	{% block navigation_bar %}
+		<div class="navigation-bar">
+			<a href="/readingTime/">home</a>
+			<a href="#temp#">MyBooks</a>
+			<a href="#temp#" class="right">Contact Us</a>
+			{% if logged_in %}
+				<a href="/readingTime/logOut/" class="right">Sign Out</a>
+				<a href="/readingTime/signIn/" class="right">My account</a> 
+			{% else %}
+				<a href="/readingTime/register/" class="right">Register</a>
+				<a href="/readingTime/signIn/" class="right">Sign In</a>
+			{% endif %}
+		</div>
+	{% endblock %}
+		
+	<!-- Developer poll section -->
+	{% block developer_poll %}
+	{% endblock %}
+		
+	<!-- main body -->
+	<div class="main">
+	{% block body_block %}
+	{% endblock %}
+	</div>
+		
+	<!-- footer (will not be modified -->
+	{% block footer %}
+	<div class="footer">
+		<h3>ReadingTime</h3>
+	</div>
+	{% endblock %}
+	</body>
+</html>

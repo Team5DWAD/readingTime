@@ -1,47 +1,15 @@
-<!DOCTYPE html>
-
+{% extends 'readingTime/base.html' %}
 {% load staticfiles %}
 
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
-		<title>Website Category Design Prototype #1</title>
-	</head>
-	
-	<body>
-		
-		<div class="navigation-bar">
-			<a href="/readingTime/">home</a>
-			<a href="#temp#">MyBooks</a>
-			<a href="#temp#">{{ category }}</a>
-			<a href="#temp#" class="right">Contact Us</a>
-			<!-- checks if user is logged in -->
-			{% if logged_in %}
-				<a href="/readingTime/logOut/" class="right">Sign Out</a>
-				<a href="/readingTime/signIn/" class="right">My account</a> 
-			{% else %}
-				<a href="/readingTime/register/" class="right">Register</a>
-				<a href="/readingTime/signIn/" class="right">Sign In</a>
-			{% endif %}
-		</div>
-		
-		<div class="main"><ul>
-			{% if books %}
-				{% for book in books %}
-					<li> 
-						<div class="header" style="cursor: pointer" onclick="location.href='/readingTime/book/'">{{ book.title }}</div>
-					</li>
-				{% endfor %}
-			</ul>
-			{% else %} <strong>No books present!</strong>
-			{% endif %}
-		</ul></div>
-		
-		<div class="footer">
-			<h3>ReadingTime</h3>
-		</div>
-		
-	</body>
-</html>
+{% block body_block %}		
+<ul>
+	{% if books %}
+		{% for book in books %}
+			<li> 
+				<div class="header" style="cursor: pointer" onclick="location.href='/readingTime/book/?{{ book.title }}'">{{ book.title }}</div>
+			</li>
+		{% endfor %}
+	{% else %} <strong>No books present!</strong>
+	{% endif %}
+</ul>
+{% endblock %}

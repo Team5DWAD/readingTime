@@ -1,10 +1,16 @@
-* {
-	box-sizing: border-box;
+/* Basic Styling */
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
 }
-
-body {
-	font-family: 'Poppins', sans-serif;
-	margin: 0;
+ 
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 15px;
+  display: flex;
 }
 
 /** Sticky allows us to have a navigation bar that can be either fixed or relative*/
@@ -36,37 +42,111 @@ body {
 }
 
 /* MAIN */
-.book{
-	width:100%;
-	overflow:hidden;
-	background: #a2a0a5;
-	/*margin-top: 20px;*/
+
+/* Columns */
+.left-column {
+  width: 65%;
+  position: relative;
+}
+ 
+.right-column {
+  width: 35%;
+  margin-top: 60px;
 }
 
-.book ul{
-	padding: 0px;
-	margin: 0px;
+/* Left Column */
+.left-column img {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  /*transition: all 0.3s ease;*/
+  transition: 0;
 }
 
-.book ul li{
-	float: left;
-	list-style: none;
-	width:45%;
-	height:800px;
-	background: #79787a;
-	margin: 20px 0px 20px 55px;
+.left-column img.active {
+  opacity: 1;
 }
 
-.book ul li .book-cover{
-	width: 60%;
-	height: 500px;
-	line-height: 600px;
-	background: #36454F;
-	text-align: center;
-	color:white;
-	font-size: 20px;
-	margin: 30px 0px 0px 30px;
+
+/* Product Description */
+.product-description {
+  border-bottom: 1px solid #E1E8EE;
+  margin-bottom: 20px;
 }
+.product-description h1 {
+  font-weight: 300;
+  font-size: 52px;
+  color: #43484D;
+  letter-spacing: -2px;
+}
+.product-description p {
+  font-size: 16px;
+  font-weight: 300;
+  color: #86939E;
+  line-height: 24px;
+}
+
+/* Cable Configuration */
+.cable-choose {
+  margin-bottom: 20px;
+}
+ 
+.cable-choose button {
+  border: 2px solid #E1E8EE;
+  border-radius: 6px;
+  padding: 13px 20px;
+  font-size: 14px;
+  color: #5E6977;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all .5s;
+  white-space: normal;
+  text-align: center;  
+}
+ 
+.cable-choose button:hover,
+.cable-choose button:active,
+.cable-choose button:focus {
+  border: 2px solid #86939E;
+  outline: none;
+}
+ 
+.cable-config {
+  border-bottom: 1px solid #E1E8EE;
+  margin-bottom: 20px;
+}
+ 
+.cable-config a {
+  color: #358ED7;
+  text-decoration: none;
+  font-size: 12px;
+  position: relative;
+  margin: 10px 0;
+  display: inline-block;
+}
+.cable-config a:before {
+  content: &amp;quot;?&amp;quot;;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  border: 2px solid rgba(53, 142, 215, 0.5);
+  display: inline-block;
+  text-align: center;
+  line-height: 16px;
+  opacity: 0.5;
+  margin-right: 5px;
+}
+
+
+
+
+
+
+
+
+
 
 /*FOOTER*/
 .footer {
@@ -77,16 +157,30 @@ body {
 }
 
 /* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
-@media screen and (max-width: 400px) {
-  .navbar a {
-    float: none;
+@media (max-width: 940px) {
+  .container {
+    flex-direction: column;
+    margin-top: 60px;
+  }
+ 
+  .left-column,
+  .right-column {
     width: 100%;
+  }
+ 
+  .left-column img {
+    width: 300px;
+    right: 0;
+    top: -65px;
+    left: initial;
+  }
+}
+ 
+@media (max-width: 535px) {
+  .left-column img {
+    width: 220px;
+    top: -85px;
   }
 }
 
-@media screen and (max-width: 1200px) {
-	.main ul li {
-		width: 50%;
-		margin-left: 40px;
-	}
-}
+

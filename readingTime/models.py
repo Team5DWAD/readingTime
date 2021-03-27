@@ -21,6 +21,11 @@ class Category(models.Model):
 class Book(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     title = models.CharField(max_length=20)
+    author = models.CharField(max_length=30)
+    synopsis = models.CharField(max_length=1000)
+    personal_rating = models.IntegerField()
+    global_rating = models.IntegerField()
+    in_read_list = models.BooleanField()
 
     def __str__(self):
         return self.title
@@ -37,17 +42,6 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.username
-
-'''
-@receiver(post_save, sender=User)
-def create_user_profile(sender, instance, created, **kwargs):
-    if created:
-        Profile.objects.create(user=instance)
-
-@receiver(post_save, sender=User)
-def save_user_profile(sender, instance, **kwargs):
-    instance.profile.save()
-'''
 
 @receiver(post_save, sender=User)
 def update_profile_signal(sender, instance, created, **kwargs):

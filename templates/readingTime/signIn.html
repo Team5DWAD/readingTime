@@ -1,16 +1,17 @@
-<!DOCTYPE html>
-
+{% extends 'readingTime/base.html' %}
 {% load staticfiles %}
 
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" type="text/css" href="{% static 'css/register.css' %}" />
-	</head>
-	
-	<body>
-		<div class="main">
+{% block style_css %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/register.css' %}" />
+{% endblock %}
+
+{% block navigation_bar %}
+<div class="navigation-bar">
+	<a href="/readingTime/">home</a>		
+</div>
+{% endblock %}
+
+{% block body_block %}
 			{% if messages %}
 				{% for  message in messages %}
 					<div class="alert"> 
@@ -19,7 +20,8 @@
 					</div>
 				{% endfor %}
 			{% endif %}
-			<form class="registration-form" method="post" action="{% url 'readingTime:signIn' %}" enctype="multipart/form-data" ><!-- action indicates where to send the form when submitted -->	
+			<!-- action indicates where to send the form when submitted -->
+			<form class="registration-form" method="post" action="{% url 'readingTime:signIn' %}" enctype="multipart/form-data" > 
 				<div class="register-container">
 					<h2>Sign in to ReadingTime</h2>
 					{% csrf_token %}
@@ -29,14 +31,6 @@
 					Password: <input type="password" name="password1" value="" size="50" />
 					<br />
 					
-					<!--
-					<label for="Username"><b>Username</b></label>
-					<input type="text" placeholder="Enter username" name="username" required>
-					
-					<label for="password"><b>Password</b></label>
-					<input type="password" placeholder="Enter password" name="password" required>
-					-->
-					
 					<!-- Login button -->
 					<div>
 						<button type="login" class="submit-button">Login</button> 
@@ -45,10 +39,4 @@
 					New to ReadingTime? <a href="{% url 'readingTime:register' %}"<strong>Register</strong></a> for free!
 				</div>
 			</form>
-		</div>
-		
-		
-		
-		
-	</body>
-</html>
+{% endblock %}

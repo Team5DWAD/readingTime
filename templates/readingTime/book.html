@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 {% load staticfiles %}
 
 <html>
@@ -7,26 +6,63 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" type="text/css" href="{% static 'css/book.css' %}" />
-		<title>Website Category Design Prototype #1</title>
+		<title>Website Homepage Design Prototype #1</title>
 	</head>
-	
-	<body>
-		
-		<div class="navigation-bar">
+
+	<div class="navigation-bar">
 			<a href="/readingTime/">home</a>
 			<a href="#temp#">MyBooks</a>
 			<a href="#temp#" class="right">Contact Us</a>
-			<a href="/readingTime/register/" class="right">Register</a>
-			<a href="/readingTime/signIn/" class="right">Sign In</a>
+			{% if logged_in %}
+				<a href="/readingTime/logOut/" class="right">Sign Out</a>
+				<a href="/readingTime/signIn/" class="right">My account</a> 
+			{% else %}
+				<a href="/readingTime/register/" class="right">Register</a>
+				<a href="/readingTime/signIn/" class="right">Sign In</a>
+			{% endif %}
+	</div>
+	
+	<main class="container">
+ 
+	  <!-- Left Column / Headphones Image -->
+	  <div class="left-column">
+		<img src="{% static 'books/1.jpg' %}" alt="NO IMAGE" />
+	  </div>
+	  
+	  <!-- Right Column -->
+	  <div class="right-column">
+	 
+		<!-- Product Description -->
+		<div class="product-description">
+		  <h1>{{ title }}</h1>
+		  <h2>{{ author}}</h2>
+		  <p>{{ synopsis }}</p>
 		</div>
-		
-		<div class="book"><ul>
-			<li><div class="book-cover">BookName</div></li>
-		</ul></div>
-		
-		<div class="footer">
-			<h3>ReadingTime</h3>
+	 
+		<!-- Product Configuration -->
+		<div class="product-configuration">
+	 
+		  <!-- Cable Configuration -->
+		  <div class="cable-config">
+			<span>Activities</span>
+			<p></p>
+			<div class="cable-choose">
+			  <button>ToRead</button>
+			  <br /><p></p>
+			  <button>Global Rating<br/><p></p>{{ global_rating }}</button>
+			  <br /><p></p>
+			  <button>Personal Rating<br /></p>{{ personal_rating }}</button>
+			</div>
+		  </div>
 		</div>
-		
-	</body>
+	  </div>
+	</main>
+	<!--
+	<div class="footer">
+		<h3>ReadingTime</h3>
+	</div>
+	-->
 </html>
+
+
+

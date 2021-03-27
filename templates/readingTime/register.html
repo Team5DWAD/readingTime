@@ -1,16 +1,17 @@
-<!DOCTYPE html>
-
+{% extends 'readingTime/base.html' %}
 {% load staticfiles %}
 
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" type="text/css" href="{% static 'css/register.css' %}" />
-	</head>
-	
-	<body>
-		<div class="main">
+{% block style_css %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/register.css' %}" />
+{% endblock %}
+
+{% block navigation_bar %}
+<div class="navigation-bar">
+	<a href="/readingTime/">home</a>		
+</div>
+{% endblock %}
+
+{% block body_block %}
 			{% if messages %}
 				{% for  message in messages %}
 					<div class="alert"> 
@@ -19,12 +20,6 @@
 					</div>
 				{% endfor %}
 			{% endif %}
-			<!--
-			{% if registered %}
-				<a href="{% url 'readingTime:home' %}">Home</a><br />
-			{% else %}
-			-->
-			
 			<!-- action indicates where to send the form when submitted -->	
 			<form id="user_form" class="registration-form" method="post" action="{% url 'readingTime:register' %}" enctype="multipart/form-data">
 				<div class="register-container">
@@ -40,23 +35,6 @@
 							{{ field }}
 						</p>
 					{% endfor %}
-					<!-- <label for="email"><b>Email Address</b></label>
-					<input type="email" placeholder="example1@company.com" name="email" required>
-					
-					<label for="firstName"><b>First Name</b></label>
-					<input type="text" placeholder="Bob" name="firstName" required>
-					
-					<label for="lastname"><b>Last Name</b></label>
-					<input type="text" placeholder="Dylan" name="lastName" required>
-					
-					<label for="Username"><b>Username</b></label>
-					<input type="text" placeholder="Bob247" name="username" required>
-					
-					<label for="password"><b>Password</b></label>
-					<input type="password" placeholder="######" name="password" required>
-					
-					<label for="password-repeat"><b>Repeat Password</b></label>
-					<input type="password" placeholder="######" name="password-repeat" required>
 					
 					<!-- Cancel and submit buttons -->
 					<div>
@@ -67,9 +45,6 @@
 					</div>
 				</div>
 			</form>
-			{% endif %}
-		</div>
-	</body>
-</html>
+{% endblock %}
 	
 

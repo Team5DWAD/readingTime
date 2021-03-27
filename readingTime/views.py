@@ -40,8 +40,35 @@ def category(request, category_name='Default category'):
                                                                 'books': books_list,
                                                                 'category_name': category_name})
 
-def book(request):
-    return render(request,'readingTime/book.html')
+def book(request, book_title='Default Title'):
+    book_title = str(request.get_full_path)
+    # gets the book title from the URL
+    book_title = (book_title.split("?",1)[1]).replace("'>>","").replace("%20"," ")
+    # gets the author from the book_title
+    author = Book.objects.get(title=book_title).author
+    # gets the synopsis from the book_title
+    synopsis = Book.objects.get(title=book_title).synopsis
+    # gets the personal rating from the book_title
+    personal_rating = Book.objects.get(title=book_title).personal_rating
+    # gets the global rating from the book_title
+    global_rating = Book.objects.get(title=book_title).global_rating
+    # gets if the book is in the read_list
+    in_read_list = Book.objects.get(title=book_title).in_read_list
+    
+
+    # Checks if a user has logged in
+    if request.user.is_authenticated:
+        logged_in = True
+    else:
+        logged_in = False
+    
+    return render(request,'readingTime/book.html', context={'logged_in': logged_in,
+                                                            'title': book_title,
+                                                            'author': author,
+                                                            'synopsis': synopsis,
+                                                            'personal_rating': personal_rating,
+                                                            'global_rating': global_rating,
+                                                            'in_read_list': in_read_list})
 
 def signIn(request):
     # If the user is already logged in (temp -> redirects back to home page)
