@@ -21,5 +21,6 @@ urlpatterns = [
     path('', views.home, name='home'),
     # mapping of all urls starting with readingTime/ to be handled by readingTime
     path('readingTime/', include('readingTime.urls')),
+    path('polls/', include('polls.urls')),
     path('admin/', admin.site.urls),
 ]

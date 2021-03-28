@@ -20,16 +20,19 @@
 			<a href="#temp#" class="right">Contact Us</a>
 			{% if logged_in %}
 				<a href="/readingTime/logOut/" class="right">Sign Out</a>
-				<a href="/readingTime/signIn/" class="right">My account</a> 
+				<a href="/readingTime/signIn/" class="right">My account</a>
+				<a href="/polls/" class="right">User Polls</a>				
 			{% else %}
 				<a href="/readingTime/register/" class="right">Register</a>
 				<a href="/readingTime/signIn/" class="right">Sign In</a>
+				<a href="/readingTime/signIn/" class="right">Poll Results</a>
 			{% endif %}
 		</div>
 	{% endblock %}
 		
 	<!-- Developer poll section -->
 	{% block developer_poll %}
+		
 	{% endblock %}
 		
 	<!-- main body -->

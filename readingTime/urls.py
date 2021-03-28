@@ -1,6 +1,7 @@
 from django.urls import path
 from readingTime import views
 
+
 app_name = 'readingTime'
 
 urlpatterns = [
@@ -14,4 +15,5 @@ urlpatterns = [
     path('category/<slug:category>', views.category, name='category'),
     path('category/', views.category, name='category'),
     path('book/', views.book, name='book'),
+    
 ]
