@@ -41,6 +41,7 @@ h1,h2 {
 }
 
 .main {
+	overflow: auto;
 	background-color: #36454F;
 	z-index: 1; /* TODO implement so that register.html is not a separate file */
 	width: 100%;
@@ -124,13 +125,6 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus {
 	color: black;
 }
 
-
-/* no overflow allowed until the height is less than 900px */
-@media screen and (max-height: 900px){
-	.main{
-		overflow: auto;
-	}
-}
 
 
 

@@ -26,7 +26,10 @@ def category(request, category_name='Default category'):
     # we get all books which are linked to the given category name (i.e.: Fiction)
     category_name = str(request.get_full_path)
     # gets the category name from the url
-    category_name = (category_name.split("?",1)[1]).replace("'>>","")
+    try:
+        category_name = (category_name.split("?",1)[1]).replace("'>>","")
+    except:
+        category_name = "temporary"
     # gets the books stored in the given category
     books_list = Book.objects.filter(category__name=category_name)
     
@@ -43,18 +46,24 @@ def category(request, category_name='Default category'):
 def book(request, book_title='Default Title'):
     book_title = str(request.get_full_path)
     # gets the book title from the URL
-    book_title = (book_title.split("?",1)[1]).replace("'>>","").replace("%20"," ")
-    # gets the author from the book_title
-    author = Book.objects.get(title=book_title).author
-    # gets the synopsis from the book_title
-    synopsis = Book.objects.get(title=book_title).synopsis
-    # gets the personal rating from the book_title
-    personal_rating = Book.objects.get(title=book_title).personal_rating
-    # gets the global rating from the book_title
-    global_rating = Book.objects.get(title=book_title).global_rating
-    # gets if the book is in the read_list
-    in_read_list = Book.objects.get(title=book_title).in_read_list
-    
+    try:
+        book_title = (book_title.split("?",1)[1]).replace("'>>","").replace("%20"," ")
+        # gets the author from the book_title
+        author = Book.objects.get(title=book_title).author
+        # gets the synopsis from the book_title
+        synopsis = Book.objects.get(title=book_title).synopsis
+        # gets the personal rating from the book_title
+        personal_rating = Book.objects.get(title=book_title).personal_rating
+        # gets the global rating from the book_title
+        global_rating = Book.objects.get(title=book_title).global_rating
+        # gets if the book is in the read_list
+        in_read_list = Book.objects.get(title=book_title).in_read_list
+    except:
+        book_title = "temporary"
+        author = "temporary author"
+        synopsis = "temporary synopsis"
+        personal_rating = global_rating = 5
+        in_read_list = False
 
     # Checks if a user has logged in
     if request.user.is_authenticated:
@@ -113,24 +122,6 @@ def register(request):
 
         # If the forms are valid
         if user_form.is_valid():
-            '''
-            if User.objects.filter(email=user_form.cleaned_data['email']).exists():
-                messages.error(request, 'Form contains errors. Double check')
-                return render(request, 'readingTime/register.html', {
-                    'user_form': user_form,
-                    'error_message': 'The email provided already exists.'})
-            elif User.objects.filter(username=user_form.cleaned_data['username']).exists():
-                messages.error(request, 'Form contains errors. Double')
-                return render(request, 'readingTime/register.html', {
-                    'user_form': user_form,
-                    'error_message': 'The username provided already exists.'})
-            elif user_form.cleaned_data['password1'] != user_form.cleaned_data['password2']:
-                messages.error(request, 'Form contains errors')
-                return render(request, 'readingTime/register.html', {
-                    'user_form': user_form,
-                    'error_message': 'The passwords provided do not match.'})
-            else:
-            '''
             user = user_form.save()
             # we load our profile instance
             user.refresh_from_db()
@@ -143,7 +134,6 @@ def register(request):
             password = user_form.cleaned_data.get('password1')
             user = authenticate(username=username, password=password)
             login(request, user)
-            #registered = True
             # if user:
             return redirect('readingTime:home')
             

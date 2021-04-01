@@ -44,9 +44,11 @@ html, body {
 /* MAIN */
 
 /* Columns */
-.left-column {
+.left {
   width: 65%;
-  position: relative;
+  /*position: relative;*/
+  /*float: left;*/
+  margin-top: 30px;
 }
  
 .right-column {
@@ -55,20 +57,18 @@ html, body {
 }
 
 /* Left Column */
-.left-column img {
-  width: 100%;
-  position: absolute;
+
+.left img {
+  width: 70%;
+  height: 90%;
+  position: static;
+  overflow: hidden;
   left: 0;
   top: 0;
-  opacity: 0;
-  /*transition: all 0.3s ease;*/
-  transition: 0;
-}
-
-.left-column img.active {
   opacity: 1;
+  transition: all 0.3s ease;
+  float: left;
 }
-
 
 /* Product Description */
 .product-description {
@@ -126,35 +126,21 @@ html, body {
   margin: 10px 0;
   display: inline-block;
 }
-.cable-config a:before {
-  content: &amp;quot;?&amp;quot;;
-  height: 15px;
-  width: 15px;
-  border-radius: 50%;
-  border: 2px solid rgba(53, 142, 215, 0.5);
-  display: inline-block;
-  text-align: center;
-  line-height: 16px;
-  opacity: 0.5;
-  margin-right: 5px;
-}
-
-
-
-
-
-
-
 
 
 
 /*FOOTER*/
 .footer {
+	position: relative;
+	width: 100%;
+	left: 0;
+	bottom: 0;
 	padding: 30px;
 	text-align: center;
 	background: #333;
 	font-family: poppins;
 }
+
 
 /* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
 @media (max-width: 940px) {
@@ -163,23 +149,9 @@ html, body {
     margin-top: 60px;
   }
  
-  .left-column,
-  .right-column {
+  .left,
+  .right {
     width: 100%;
-  }
- 
-  .left-column img {
-    width: 300px;
-    right: 0;
-    top: -65px;
-    left: initial;
-  }
-}
- 
-@media (max-width: 535px) {
-  .left-column img {
-    width: 220px;
-    top: -85px;
   }
 }
 

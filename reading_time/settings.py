@@ -59,7 +59,7 @@ ROOT_URLCONF = 'reading_time.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [TEMPLATE_DIR,],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -73,6 +73,8 @@ TEMPLATES = [
 ]
 
 STATICFILES_DIRS = [STATIC_DIR, ]
+
+MEDIA_ROOT = MEDIA_DIR
 
 WSGI_APPLICATION = 'reading_time.wsgi.application'
 

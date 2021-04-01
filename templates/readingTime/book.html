@@ -24,10 +24,10 @@
 	
 	<main class="container">
  
-	  <!-- Left Column / Headphones Image -->
-	  <div class="left-column">
-		<img src="{% static 'books/1.jpg' %}" alt="NO IMAGE" />
-	  </div>
+	  <!-- Left Column / Image -->
+		<div class="left">
+			<img src="{% static 'books/' %}{{ title }}.jpg" alt="Temporary_Text (image not found)" />
+		</div>
 	  
 	  <!-- Right Column -->
 	  <div class="right-column">
@@ -57,11 +57,11 @@
 		</div>
 	  </div>
 	</main>
-	<!--
+	
 	<div class="footer">
 		<h3>ReadingTime</h3>
 	</div>
-	-->
+	
 </html>
 
 

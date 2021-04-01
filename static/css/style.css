@@ -47,6 +47,8 @@ body {
 
 /* MAIN */
 .main{
+	display: flex;
+	flex-wrap: wrap;
 	width:100%;
 	overflow:hidden;
 	background: #a2a0a5;
@@ -61,7 +63,7 @@ body {
 .main ul li{
 	float: left;
 	list-style: none;
-	width:16%;
+	width: 304px;
 	height:400px;
 	background: #79787a;
 	margin: 20px 0px 20px 55px;
@@ -82,12 +84,12 @@ body {
 	color: #333;
 }
 
-/*
+
 img {
-	width: 150px;
-	height: 150px;
+	/*width: 304px;*/
+	width: 100%;
+	height:350px;
 }
-*/
 
 .book{
 	float: left;
@@ -96,6 +98,11 @@ img {
 	height:400px;
 	background: #79787a;
 	margin: 20px 0px 20px 55px;
+	min-width: 1200px;
+	max-width: 1200px;
+	min-height: 400px;
+	max-height: 400px;
+	overflow: auto;
 }
 
 
@@ -103,6 +110,10 @@ img {
 
 /*FOOTER*/
 .footer {
+	position: relative;
+	width: 100%;
+	left: 0;
+	bottom: 0;
 	padding: 30px;
 	text-align: center;
 	background: #333;
@@ -117,12 +128,14 @@ img {
   }
 }
 
+/*
 @media screen and (max-width: 1200px) {
 	.main ul li {
 		width: 50%;
 		margin-left: 40px;
 	}
 }
+*/
 /* TODO further responsive layout...*/
 
 

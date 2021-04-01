@@ -7,9 +7,38 @@
 		{% for book in books %}
 			<li> 
 				<div class="header" style="cursor: pointer" onclick="location.href='/readingTime/book/?{{ book.title }}'">{{ book.title }}</div>
+				<img src="{% static 'books/' %}{{ book.title }}.jpg" alt="Temporary text(image not found)" />
 			</li>
 		{% endfor %}
-	{% else %} <strong>No books present!</strong>
+	{% else %}
+		<li> 
+			<div class="header" style="cursor: pointer" onclick="location.href='/readingTime/book/'">Temporary Book</div>
+			<img src="{% static 'img/temporary.jpg' %}" alt="Temporary text(image not found)" />
+		</li>
+		<li> 
+			<div class="header" style="cursor: pointer" onclick="location.href='/readingTime/book/'">Temporary Book</div>
+			<img src="{% static 'img/temporary.jpg' %}" alt="Temporary text(image not found)" />
+		</li>
+		<li> 
+			<div class="header" style="cursor: pointer" onclick="location.href='/readingTime/book/'">Temporary Book</div>
+			<img src="{% static 'img/temporary.jpg' %}" alt="Temporary text(image not found)" />
+		</li>
+		<li> 
+			<div class="header" style="cursor: pointer" onclick="location.href='/readingTime/book/'">Temporary Book</div>
+			<img src="{% static 'img/temporary.jpg' %}" alt="Temporary text(image not found)" />
+		</li>
+		<li> 
+			<div class="header" style="cursor: pointer" onclick="location.href='/readingTime/book/'">Temporary Book</div>
+			<img src="{% static 'img/temporary.jpg' %}" alt="Temporary text(image not found)" />
+		</li>
+		<li> 
+			<div class="header" style="cursor: pointer" onclick="location.href='/readingTime/book/'">Temporary Book</div>
+			<img src="{% static 'img/temporary.jpg' %}" alt="Temporary text(image not found)" />
+		</li>
+		<li> 
+			<div class="header" style="cursor: pointer" onclick="location.href='/readingTime/book/'">Temporary Book</div>
+			<img src="{% static 'img/temporary.jpg' %}" alt="Temporary text(image not found)" />
+		</li>
 	{% endif %}
 </ul>
 {% endblock %}

@@ -267,49 +267,70 @@ def populate():
     books_nonfict = [
         {'title': 'Four Lost Cities',
          'author': 'Annalee Newitz',
-         'synopsis': 'temp',
+         'synopsis': '''In Four Lost Cities, acclaimed science journalist Annalee Newitz takes readers
+                    on an entertaining and mind-bending adventure into the deep history of urban life. ''',
          'personal_rating': 5,
          'global_rating': 4,
          'in_read_list': True},
 
         {'title': 'The Good Girls',
          'author': 'Sonia Faleiro',
-         'synopsis': 'temp',
+         'synopsis': '''The girls' names were Padma and Lalli, but they were so inseparable that people in
+                    the village called them Padma Lalli. Sixteen-year-old Padma sparked and burned. Fourteen-year-old
+                    Lalli was an incorrigible romantic. They grew up in Katra Sadatganj, an eye-blink of a village in
+                    western Uttar Pradesh crammed into less than one square mile of land. It was out in the fields,
+                    in the middle of mango season, that the rumors started.''',
+,
          'personal_rating': 5,
          'global_rating': 4,
          'in_read_list': True},
 
         {'title': 'The Rope',
          'author': 'Alex Tresniowski',
-         'synopsis': 'temp',
+         'synopsis': '''In the tranquil seaside town of Asbury Park, New Jersey, ten-year-old schoolgirl Marie Smith is brutally murdered.
+                    Small town officials, unable to find the culprit, call upon the young manager of a New York detective agency for help.
+                    It is the detective’s first murder case, and now, the specifics of the investigation and daring sting operation that
+                    caught the killer is captured in all its rich detail for the first time.''',
          'personal_rating': 5,
          'global_rating': 4,
          'in_read_list': True},
 
-        {'title': 'Mike Nichols: A Life',
+        {'title': 'Mike Nichols - A Life',
          'author': 'Mark Harris',
-         'synopsis': 'temp',
+         'synopsis': '''Mike Nichols burst onto the scene as a wunderkind: while still in his twenties, he was half of a hit improv duo with
+                    Elaine May that was the talk of the country. Next he directed four consecutive hit plays, won back-to-back Tonys, ushered in
+                    a new era of Hollywood moviemaking with Who's Afraid of Virginia Woolf?, and followed it with The Graduate, which won him an
+                    Oscar and became the third-highest-grossing movie ever. At thirty-five, he lived in a three-story Central Park West penthouse,
+                    drove a Rolls-Royce, collected Arabian horses, and counted Jacqueline Kennedy, Elizabeth Taylor, Leonard Bernstein, and Richard
+                    Avedon as friends.''',
          'personal_rating': 5,
          'global_rating': 4,
          'in_read_list': True},
 
         {'title': 'Chatter',
          'author': 'Ethan Kross',
-         'synopsis': 'temp',
+         'synopsis': '''Tell a stranger that you talk to yourself, and you're likely to get written off as eccentric. But the truth is that we all
+                    have a voice in our head. When we talk to ourselves, we often hope to tap into our inner coach but find our inner critic instead.
+                    When we're facing a tough task, our inner coach can buoy us up: Focus--you can do this. But, just as often, our inner critic sinks
+                    us entirely: I'm going to fail. They'll all laugh at me. What's the use?''',
          'personal_rating': 5,
          'global_rating': 4,
          'in_read_list': True},
 
         {'title': 'White Feminism',
          'author': 'Koa Beck',
-         'synopsis': 'temp',
+         'synopsis': '''Join the important conversation about race, empowerment, and inclusion in the United States with this powerful new feminist classic
+                    and rousing call for change. Koa Beck, writer and former editor-in-chief of Jezebel, boldly examines the history of feminism,
+                    from the true mission of the suffragettes to the rise of corporate feminism with clear-eyed scrutiny and meticulous detail.''',
          'personal_rating': 5,
          'global_rating': 4,
          'in_read_list': True},
 
         {'title': 'American Baby',
          'author': 'Gabrielle Glaser',
-         'synopsis': 'temp',
+         'synopsis': '''In 1960s America, at the height of the Baby Boom, women were encouraged to stay home and raise large families, but sex and childbirth
+                    were taboo subjects. Premarital sex was not uncommon, but birth control was hard to get and abortion was illegal. In 1961, sixteen-year-old
+                    Margaret Erle fell in love and became pregnant. Her unsympathetic family sent her to a maternity home.''',
          'personal_rating': 5,
          'global_rating': 4,
          'in_read_list': True}]
