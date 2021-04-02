@@ -9,6 +9,9 @@ urlpatterns = [
     # See Section 8.1
     path('', views.home, name='home'),
     path('signIn/', views.signIn, name='signIn'),
+    path('myAccount/', views.myAccount, name='myAccount'),
+    path('editProfile/', views.editProfile, name='editProfile'),
+    path('changePassword/', views.changePassword, name='changePassword'),
     path('logOut/', views.logOut, name='logOut'),
     path('register/', views.register, name='register'),
     # we use slug since we have dashes

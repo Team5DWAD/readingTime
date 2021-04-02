@@ -236,7 +236,7 @@ def populate():
          'global_rating': 4,
          'in_read_list': True},
 
-        {'title': 'Craft: An American History',
+        {'title': 'Craft - An American History',
          'author': 'Glenn Adamson',
          'synopsis': 'temp',
          'personal_rating': 5,

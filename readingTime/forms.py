@@ -1,16 +1,7 @@
 from django import forms
 from readingTime.models import Profile
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
-'''
-class RegisterForm(forms.Form):
-    email = forms.EmailField(widget=forms.EmailInput(), required=True)
-    first_name = forms.CharField(widget=forms.TextInput(), required=True)
-    last_name = forms.CharField(widget=forms.TextInput(), required=True)
-    username = forms.CharField(widget=forms.TextInput(), required=True)
-    password = forms.CharField(widget=forms.PasswordInput(), required=True)
-    password_repeat = forms.CharField(widget=forms.PasswordInput(), required=True)   
-'''
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 
 class RegisterForm(UserCreationForm):
     # we inherite username, password1 and password2 from UserCreationForm
@@ -23,3 +14,9 @@ class RegisterForm(UserCreationForm):
         model = User
         fields = ('email', 'first_name', 'last_name', 'username', 'password1', 'password2',)
 
+class EditProfileForm(UserChangeForm):
+
+    class Meta:
+        # Register form based on the User form
+        model = User
+        fields = ('email', 'first_name', 'last_name',)

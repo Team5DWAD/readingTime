@@ -8,6 +8,7 @@
 {% endblock %}
 
 {% block body_block %}
+<div class="main">
 <ul>
 	{% if categories %}
 		{% for category in categories %}
@@ -15,12 +16,12 @@
 				<div class="header" style="cursor: pointer" onclick="location.href='/readingTime/category/?{{ category.name }}'">{{ category.name }}</div>
 				<!-- we get a different image for each category in categories. -->
 				<img src="{% static 'img/' %}{{ category.name }}.jpg" alt="Temporary text(image not found)" />
-				<!-- <img src="{% static 'img/' %}{{ category.name }}.jpg" alt="Temporary text(image not found)" style="width:304px;height:350px" /> -->
 			</li>
 		{% endfor %}
+	<!-- if no categories present, show the following example -->
 	{% else %}
 		<li> 
-			<div class="header" style="cursor: pointer" onclick="location.href='/readingTime/category/'">Temporary Category</div>
+			<div class="header" style="cursor: pointer" onclick="location.href='/readingTime/category/'" >Temporary Category</div>
 			<!-- temporary image for each category. -->
 			<img src="{% static 'img/temporary.jpg' %}" alt="Temporary text(image not found)" />
 		</li>
@@ -56,6 +57,7 @@
 		</li>
 	{% endif %}
 </ul>
+</div>
 {% endblock %}
 
 	

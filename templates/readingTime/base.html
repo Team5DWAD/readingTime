@@ -6,6 +6,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- The css file can be modified for every template if required -->
 		{% block style_css %}
 		<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
 		{% endblock %}
@@ -13,6 +14,7 @@
 	</head>
 	
 	<body>
+	<!-- Sticky navigation bar where the main functionality can be accessed from -->
 	{% block navigation_bar %}
 		<div class="navigation-bar">
 			<a href="/readingTime/">home</a>
@@ -20,7 +22,7 @@
 			<a href="#temp#" class="right">Contact Us</a>
 			{% if logged_in %}
 				<a href="/readingTime/logOut/" class="right">Sign Out</a>
-				<a href="/readingTime/signIn/" class="right">My account</a>
+				<a href="/readingTime/myAccount/" class="right">My account</a>
 				<a href="/polls/" class="right">User Polls</a>				
 			{% else %}
 				<a href="/readingTime/register/" class="right">Register</a>
@@ -36,12 +38,11 @@
 	{% endblock %}
 		
 	<!-- main body -->
-	<div class="main">
 	{% block body_block %}
+	
 	{% endblock %}
-	</div>
 		
-	<!-- footer (will not be modified -->
+	<!-- footer (will not be modified) -->
 	{% block footer %}
 	<div class="footer">
 		<h3>ReadingTime</h3>

@@ -1,12 +1,12 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
-from django.contrib.auth import login, authenticate, logout
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login, authenticate, logout, update_session_auth_hash
+from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.urls import reverse
-from readingTime.models import Category, Book
-from readingTime.forms import RegisterForm
+from readingTime.models import Category, Book, Profile
+from readingTime.forms import RegisterForm, EditProfileForm
 
 def home(request):
     category_list = Category.objects.all()
@@ -137,7 +137,7 @@ def register(request):
             # if user:
             return redirect('readingTime:home')
             
-        #else:
+        else:
             # Invalid form
             # messages.error(request, 'Form contains errors. Double check')
             print(user_form.errors)
@@ -152,5 +152,70 @@ def register(request):
                   context={'user_form': user_form,
                            'registered': registered})
 
+def myAccount(request):
+    # Current user object
+    user = request.user
+    email = Profile.objects.get(user=user).email
+    first_name = Profile.objects.get(user=user).first_name
+    last_name = Profile.objects.get(user=user).last_name
+    username = Profile.objects.get(user=user).user
 
+    return render(request, 'readingTime/myAccount.html', context={'first_name': first_name,
+                                                                  'last_name': last_name,
+                                                                  'email': email,
+                                                                  'username': user})
 
+def editProfile(request):
+    
+    if request.method == 'POST':
+        user_form = EditProfileForm(request.POST, instance=request.user)
+
+        # If the form is valid
+        if user_form.is_valid():
+            user = user_form.save()
+            # we load our profile instance
+            user.refresh_from_db()
+            user.profile.first_name = user_form.cleaned_data.get('first_name')
+            user.profile.last_name = user_form.cleaned_data.get('last_name')
+            user.profile.email = user_form.cleaned_data.get('email')
+            user.save()
+
+            username = user_form.cleaned_data.get('username')
+            password = user_form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            
+            return redirect('readingTime:myAccount')
+            
+        else:
+            # Failed to update profile
+            messages.error(request, 'Failed to Update your profile. Try Again!')
+    else:
+        # Blank form since we do not have an HTTP POST
+        user_form = EditProfileForm(instance=request.user)
+    
+    
+    return render(request,'readingTime/editProfile.html',
+                  context={'user_form': user_form})
+
+def changePassword(request):
+    
+    if request.method == 'POST':
+        user_form = PasswordChangeForm(data=request.POST, user=request.user)
+
+        # If the form is valid
+        if user_form.is_valid():
+            user_form.save()
+            update_session_auth_hash(request, user_form.user)
+            
+            return redirect('readingTime:myAccount')
+            
+        else:
+            # Invalid password change
+            messages.error(request, 'failed to change the password. Try Again!')
+    else:
+        # Blank form since we do not have an HTTP POST
+        user_form = PasswordChangeForm(user=request.user)
+        
+    return render(request,'readingTime/changePassword.html',
+                  context={'user_form': user_form})

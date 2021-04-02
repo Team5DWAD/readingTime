@@ -22,22 +22,28 @@
 		{% endfor %}
 	{% endif %}
 	<!-- action indicates where to send the form when submitted -->
-	<form class="registration-form" method="post" action="{% url 'readingTime:signIn' %}" enctype="multipart/form-data" > 
+	<form class="registration-form" method="post" action="{% url 'readingTime:editProfile' %}" enctype="multipart/form-data" > 
 		<div class="register-container">
-			<h2>Sign in to ReadingTime</h2>
+			<h2>Edit Your ReadingTime Account</h2>
+			
 			{% csrf_token %}
 					
-			Username: <input type="text" name="username" value="" size="50" />
-			<br />
-			Password: <input type="password" name="password1" value="" size="50" />
-			<br />
+			{% for field in user_form %}
+				<p>
+					{% if field.label_tag|stringformat:"s" == 'Password' %}
+						<p> {{ field.label_tag }} </p>
+					{% else %}
+						{{ field.label_tag }}<br>
+						{{ field }}
+					{% endif %}
+				</p>
+			{% endfor %}
 					
 			<!-- Login button -->
 			<div>
-				<button type="login" class="submit-button">Login</button> 
+				<button type="submit" class="submit-button">Edit</button>
 			</div>
 			<br />
-			New to ReadingTime? <a href="{% url 'readingTime:register' %}"<strong>Register</strong></a> for free!
 		</div>
 	</form>
 </div>

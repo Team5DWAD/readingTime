@@ -1,0 +1,31 @@
+{% extends 'readingTime/base.html' %}
+{% load staticfiles %}
+
+{% block style_css %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/register.css' %}" />
+{% endblock %}
+
+{% block navigation_bar %}
+<div class="navigation-bar">
+	<a href="/readingTime/">home</a>		
+</div>
+{% endblock %}
+
+{% block body_block %}
+<div class="main" >
+	<div class="register-container">
+		<h2>Profile</h2>
+		{{ first_name }}
+		<br />
+		{{ last_name }}
+		<br />
+		{{ email }}
+		<br />
+		{{ username }}
+		<br />
+	</div>
+	
+	<a href="/readingTime/editProfile">Edit Profile</a>
+	<a href="/readingTime/changePassword">ChangePassword</a>
+</div>
+{% endblock %}

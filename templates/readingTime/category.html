@@ -1,44 +1,46 @@
 {% extends 'readingTime/base.html' %}
 {% load staticfiles %}
 
-{% block body_block %}		
-<ul>
-	{% if books %}
-		{% for book in books %}
+{% block body_block %}
+<div class="main">		
+	<ul>
+		{% if books %}
+			{% for book in books %}
+				<li> 
+					<div class="header" style="cursor: pointer" onclick="location.href='/readingTime/book/?{{ book.title }}'">{{ book.title }}</div>
+					<img src="{% static 'books/' %}{{ book.title }}.jpg" alt="Temporary text(image not found)" />
+				</li>
+			{% endfor %}
+		{% else %}
 			<li> 
-				<div class="header" style="cursor: pointer" onclick="location.href='/readingTime/book/?{{ book.title }}'">{{ book.title }}</div>
-				<img src="{% static 'books/' %}{{ book.title }}.jpg" alt="Temporary text(image not found)" />
+				<div class="header" style="cursor: pointer" onclick="location.href='/readingTime/book/'">Temporary Book</div>
+				<img src="{% static 'img/temporary.jpg' %}" alt="Temporary text(image not found)" />
 			</li>
-		{% endfor %}
-	{% else %}
-		<li> 
-			<div class="header" style="cursor: pointer" onclick="location.href='/readingTime/book/'">Temporary Book</div>
-			<img src="{% static 'img/temporary.jpg' %}" alt="Temporary text(image not found)" />
-		</li>
-		<li> 
-			<div class="header" style="cursor: pointer" onclick="location.href='/readingTime/book/'">Temporary Book</div>
-			<img src="{% static 'img/temporary.jpg' %}" alt="Temporary text(image not found)" />
-		</li>
-		<li> 
-			<div class="header" style="cursor: pointer" onclick="location.href='/readingTime/book/'">Temporary Book</div>
-			<img src="{% static 'img/temporary.jpg' %}" alt="Temporary text(image not found)" />
-		</li>
-		<li> 
-			<div class="header" style="cursor: pointer" onclick="location.href='/readingTime/book/'">Temporary Book</div>
-			<img src="{% static 'img/temporary.jpg' %}" alt="Temporary text(image not found)" />
-		</li>
-		<li> 
-			<div class="header" style="cursor: pointer" onclick="location.href='/readingTime/book/'">Temporary Book</div>
-			<img src="{% static 'img/temporary.jpg' %}" alt="Temporary text(image not found)" />
-		</li>
-		<li> 
-			<div class="header" style="cursor: pointer" onclick="location.href='/readingTime/book/'">Temporary Book</div>
-			<img src="{% static 'img/temporary.jpg' %}" alt="Temporary text(image not found)" />
-		</li>
-		<li> 
-			<div class="header" style="cursor: pointer" onclick="location.href='/readingTime/book/'">Temporary Book</div>
-			<img src="{% static 'img/temporary.jpg' %}" alt="Temporary text(image not found)" />
-		</li>
-	{% endif %}
-</ul>
+			<li> 
+				<div class="header" style="cursor: pointer" onclick="location.href='/readingTime/book/'">Temporary Book</div>
+				<img src="{% static 'img/temporary.jpg' %}" alt="Temporary text(image not found)" />
+			</li>
+			<li> 
+				<div class="header" style="cursor: pointer" onclick="location.href='/readingTime/book/'">Temporary Book</div>
+				<img src="{% static 'img/temporary.jpg' %}" alt="Temporary text(image not found)" />
+			</li>
+			<li> 
+				<div class="header" style="cursor: pointer" onclick="location.href='/readingTime/book/'">Temporary Book</div>
+				<img src="{% static 'img/temporary.jpg' %}" alt="Temporary text(image not found)" />
+			</li>
+			<li> 
+				<div class="header" style="cursor: pointer" onclick="location.href='/readingTime/book/'">Temporary Book</div>
+				<img src="{% static 'img/temporary.jpg' %}" alt="Temporary text(image not found)" />
+			</li>
+			<li> 
+				<div class="header" style="cursor: pointer" onclick="location.href='/readingTime/book/'">Temporary Book</div>
+				<img src="{% static 'img/temporary.jpg' %}" alt="Temporary text(image not found)" />
+			</li>
+			<li> 
+				<div class="header" style="cursor: pointer" onclick="location.href='/readingTime/book/'">Temporary Book</div>
+				<img src="{% static 'img/temporary.jpg' %}" alt="Temporary text(image not found)" />
+			</li>
+		{% endif %}
+	</ul>
+</div>
 {% endblock %}
