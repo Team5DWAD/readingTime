@@ -2,7 +2,7 @@
 {% load staticfiles %}
 
 {% block style_css %}
-	<link rel="stylesheet" type="text/css" href="{% static 'css/register.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/account.css' %}" />
 {% endblock %}
 
 {% block navigation_bar %}
@@ -12,20 +12,16 @@
 {% endblock %}
 
 {% block body_block %}
-<div class="main" >
-	<div class="register-container">
-		<h2>Profile</h2>
-		{{ first_name }}
-		<br />
-		{{ last_name }}
-		<br />
-		{{ email }}
-		<br />
-		{{ username }}
-		<br />
+<div class="main">
+	<div class="profile">
+		<img src="{% static 'img/avatar.png' %}" alt="Avatar">
+		<h1>{{ username }}</h1>
+		<p class="title">{{ first_name }}</p>
+		<p class="title">{{ last_name }}</p>
+		<p class="title">{{ email }}</p>
+		  
+		<p><button onclick="location.href='/readingTime/editProfile/'">Edit Profile</button></p>
+		<p><button onclick="location.href='/readingTime/changePassword/'">Change Password</button></p>
 	</div>
-	
-	<a href="/readingTime/editProfile">Edit Profile</a>
-	<a href="/readingTime/changePassword">ChangePassword</a>
 </div>
 {% endblock %}

@@ -27,7 +27,11 @@
 			<span>Activities</span>
 			<p></p>
 			<div class="activities">
-				<button>ToRead</button>
+				{% if in_read_list %}
+					<button style="background:#32CD32">ToRead</button>
+				{% else %}
+					<button style="background:#FF6C5C">ToRead</button>
+				{% endif %}
 				<br /><p></p>
 				<button>Global Rating<br/><p></p>{{ global_rating }}</button>
 				<br /><p></p>

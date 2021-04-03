@@ -219,3 +219,4 @@ def changePassword(request):
         
     return render(request,'readingTime/changePassword.html',
                   context={'user_form': user_form})
+
