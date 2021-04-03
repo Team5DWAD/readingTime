@@ -1,0 +1,83 @@
+{% extends 'readingTime/base.html' %}
+{% load staticfiles %}
+
+{% block style_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/ContactUs.css' %}" xmlns="http://www.w3.org/1999/html"/>
+{% endblock %}
+
+{% block navigation_bar %}
+	<div class="navigation-bar">
+			<a href="/readingTime/">home</a>
+
+
+			{% if logged_in %}
+				<a href="/readingTime/logOut/" class="right">Sign Out</a>
+				<a href="/readingTime/signIn/" class="right">My account</a>
+				<a href="/polls/" class="right">User Polls</a>
+			{% else %}
+				<a href="/readingTime/register/" class="right">Register</a>
+				<a href="/readingTime/signIn/" class="right">Sign In</a>
+				<a href="/readingTime/signIn/" class="right">Poll Results</a>
+			{% endif %}
+	</div>
+{% endblock %}
+
+	{% block body_block %}
+	<div class="main" >
+	<h1>Contact Us</h1>
+	<div class="main2">
+		<form id="user_form" class="contact-form" method="post" action="{% url 'readingTime:ContactUs' %}" enctype="multipart/form-data">
+				<div class="contact-container">
+
+				<h2>Request To Add A Book</h2>
+						{% csrf_token %}
+
+						Bookd Id (ISBN) <input type="text" name="BookID" value="" size="5" />
+						<br />
+						Book Title <input type="text" name="BookTitle" value="" size="50" />
+						<br />
+						Author(Full Name) <input type="text" name="Author" value="" size="30" />
+						<br />
+						Book Cover(Optional)<input type="file" id="Upload Image" name="uploadImage">
+						<br/>
+
+
+						<!-- Submit button-->
+						<div>
+							<button type="submit" onclick="location.href='/readingTime/home/'" class="submit-button">Send Request</button>
+						</div>
+
+
+					</div>
+				</form>
+	<h4>Popular Questions</h4>
+
+		<ul>
+
+				<li> <div class="Question">How To Sign In ?</br></br>
+				<Answer>Click on the sign in page button and enter your log in details</Answer></div></li>
+
+				</br></br></br>
+				<li> <div class="Question">How to edit my profile?</br></br>You need to be first signed in and then you can navigate to myAccount and click edit profile to change your details</br></div></li>
+
+				</br></br></br>
+				<li> <div class="Question">How to Sign out of my account?</br></br>You need to navigate to the sign out button at the top and press it to sign out</div></li>
+
+				</br></br></br>
+				<li> <div class="Question">How to register for an account?</br></br>Click on the register button at the top of the page in order and then enter your details or go to the sign in page and sign up to register there</div></li></ul>
+				<!-- action indicates where to send the form when submitted -->
+
+
+	</div>
+</div>
+{% endblock %}
+
+{% block footer %}
+
+{% endblock %}
+
+
+
+
+	
+

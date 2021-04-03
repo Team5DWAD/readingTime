@@ -20,3 +20,12 @@ class EditProfileForm(UserChangeForm):
         # Register form based on the User form
         model = User
         fields = ('email', 'first_name', 'last_name',)
+
+class ContactUs(forms.Form):
+    BookId=forms.CharField(max_length=7,required=True)
+    BookTitle=forms.CharField(max_length=30,required=True)
+    Author=forms.CharField(max_length=35,required=True)
+
+    class Meta:
+        model = User
+        fields = ('BookID', 'BookTitle', 'Author',)
