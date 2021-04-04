@@ -5,8 +5,8 @@ from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.urls import reverse
-from readingTime.models import Category, Book, Profile
-from readingTime.forms import RegisterForm, EditProfileForm
+from readingTime.models import Category, Book, Profile, Contact
+from readingTime.forms import RegisterForm, EditProfileForm, ContactForm
 
 def home(request):
     category_list = Category.objects.all()
@@ -136,7 +136,7 @@ def register(request):
             login(request, user)
             # if user:
             return redirect('readingTime:home')
-            
+
         else:
             # Invalid form
             # messages.error(request, 'Form contains errors. Double check')
@@ -150,7 +150,7 @@ def register(request):
         
     return render(request,'readingTime/register.html',
                   context={'user_form': user_form,
-                           'registered': registered})
+                           're': registered})
 
 def myAccount(request):
     # Current user object
@@ -219,4 +219,43 @@ def changePassword(request):
         
     return render(request,'readingTime/changePassword.html',
                   context={'user_form': user_form})
+
+def ContactUs(request):
+    if request.user.is_authenticated:
+        logged_in = True
+    else:
+        logged_in = False
+
+    if request.method == 'POST':
+        user_form = ContactForm(request.POST,request.FILES)
+        if user_form.is_valid():
+            Contact = user_form.save()
+            # we load our profile instance
+
+            Contact.BookID = user_form.cleaned_data.get('BookID')
+            Contact.BookTitle = user_form.cleaned_data.get('BookTitle')
+            Contact.Author= user_form.cleaned_data.get('Author')
+            Contact.UploadImage=user_form.cleaned_data.get('UploadImage')
+            Contact.save()
+
+            return redirect('readingTime:home')
+        else:
+
+            print(user_form.errors)
+            messages.error(request, 'Form contains errors. Double check')
+
+
+
+
+
+    else:
+        # Blank form since we do not have an HTTP POST
+        user_form = ContactForm()
+
+    context_dict = {
+        'user_form': user_form,
+        'logged_in': logged_in
+
+    }
+    return render(request,"readingTime/ContactUs.html",context=context_dict)
 
