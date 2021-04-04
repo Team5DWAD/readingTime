@@ -26,25 +26,27 @@
 	<div class="main" >
 	<h1>Contact Us</h1>
 	<div class="main2">
-		<form id="user_form" class="contact-form" method="post" action="{% url 'readingTime:ContactUs' %}" enctype="multipart/form-data">
+		<form id="user_form" class="contact-form" method="POST" action="{% url 'readingTime:ContactUs' %}" enctype="multipart/form-data">
 				<div class="contact-container">
 
 				<h2>Request To Add A Book</h2>
-						{% csrf_token %}
+					{% csrf_token %}
 
-						Bookd Id (ISBN) <input type="text" name="BookID" value="" size="5" />
+
+
+						BookID (ISBN) <input type="text" name="BookID" value="" size="30" />
 						<br />
 						Book Title <input type="text" name="BookTitle" value="" size="50" />
 						<br />
 						Author(Full Name) <input type="text" name="Author" value="" size="30" />
 						<br />
-						Book Cover(Optional)<input type="file" id="Upload Image" name="uploadImage">
+						Book Cover(Optional)<input type="file" id="UploadImage" name="UploadImage">
 						<br/>
 
 
 						<!-- Submit button-->
 						<div>
-							<button type="submit" onclick="location.href='/readingTime/home/'" class="submit-button">Send Request</button>
+							<button type="submit" class="submit-button">Send Request</button>
 						</div>
 
 

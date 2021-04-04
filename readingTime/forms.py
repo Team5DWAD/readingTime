@@ -1,6 +1,7 @@
 from django import forms
-from readingTime.models import Profile
+from readingTime.models import Profile, Contact
 from django.contrib.auth.models import User
+
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 
 class RegisterForm(UserCreationForm):
@@ -21,11 +22,14 @@ class EditProfileForm(UserChangeForm):
         model = User
         fields = ('email', 'first_name', 'last_name',)
 
-class ContactUs(forms.Form):
-    BookId=forms.CharField(max_length=7,required=True)
+class ContactForm(forms.ModelForm):
+
+
+    BookID=forms.CharField(max_length=30,required=True)
     BookTitle=forms.CharField(max_length=30,required=True)
     Author=forms.CharField(max_length=35,required=True)
+    UploadImage=forms.FileField()
 
     class Meta:
-        model = User
-        fields = ('BookID', 'BookTitle', 'Author',)
+        model = Contact
+        fields = ('BookID', 'BookTitle', 'Author','UploadImage')
