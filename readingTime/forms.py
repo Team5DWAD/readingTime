@@ -24,12 +24,14 @@ class EditProfileForm(UserChangeForm):
 
 class ContactForm(forms.ModelForm):
 
+        BookID = forms.CharField(max_length=30, required=True)
+        BookTitle = forms.CharField(max_length=30, required=True)
+        Author = forms.CharField(max_length=35, required=True)
 
-    BookID=forms.CharField(max_length=30,required=True)
-    BookTitle=forms.CharField(max_length=30,required=True)
-    Author=forms.CharField(max_length=35,required=True)
-    UploadImage=forms.FileField()
+        UploadImage = forms.FileField(required=False)
 
-    class Meta:
-        model = Contact
-        fields = ('BookID', 'BookTitle', 'Author','UploadImage')
+       
+
+        class Meta:
+            model = Contact
+            fields = ('BookID', 'BookTitle', 'Author', 'UploadImage')
