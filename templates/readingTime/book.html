@@ -35,7 +35,11 @@
 				<br /><p></p>
 				<button>Global Rating<br/><p></p>{{ global_rating }}</button>
 				<br /><p></p>
-				<button>Personal Rating<br /></p>{{ personal_rating }}</button>
+				{% if personal_rating == "Temp" %}
+					
+				{% else %}
+					<button>Personal Rating<br /></p>{{ personal_rating }}</button>
+				{% endif %}
 			</div>
 		</div>
 	</div>

@@ -30,6 +30,7 @@ class Book(models.Model):
     def __str__(self):
         return self.title
 
+
 class Profile(models.Model):
     # Linking UserProfile to a User model instance
     user = models.OneToOneField(User, on_delete=models.CASCADE)
