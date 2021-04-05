@@ -59,6 +59,7 @@ class Contact(models.Model):
     def __str__(self):
         return self.BookID
 
+
     #def save (self,*args,**kwargs):
       #  return super(Contact,self).save(*args,**kwargs)
 

@@ -2,6 +2,8 @@
 {% load staticfiles %}
 
 {% block style_css %}
+	<!-- Inherits the css file from base.html -->
+	{{ block.super }}
 	<link rel="stylesheet" type="text/css" href="{% static 'css/book.css' %}" />
 {% endblock %}
 
@@ -35,10 +37,10 @@
 				<br /><p></p>
 				<button>Global Rating<br/><p></p>{{ global_rating }}</button>
 				<br /><p></p>
-				{% if personal_rating == "Temp" %}
-					
-				{% else %}
+				{% if logged_in %}
 					<button>Personal Rating<br /></p>{{ personal_rating }}</button>
+				{% else %}
+					<button onclick="location.href='/readingTime/signIn'">Personal Rating<br /></p>SignIn </button>
 				{% endif %}
 			</div>
 		</div>

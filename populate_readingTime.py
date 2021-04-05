@@ -199,8 +199,8 @@ def populate():
 
         {'title': 'Green Eggs and Ham',
          'author': 'Dr. Seuss',
-         'synopsis': '''With unmistakable characters and signature rhymes, Dr. Seuss’s beloved favorite has
-                        cemented its place as a children’s classic. In this most famous of cumulative tales,
+         'synopsis': ''' Unmistakable characters and signature rhymes, Dr. Seusss beloved favorite has
+                        cemented its place as a childrens classic. In this most famous of cumulative tales,
                         the list of places to enjoy green eggs and ham, and friends to enjoy them with, gets
                         longer and longer.''',
          'personal_rating': 5,
@@ -705,6 +705,7 @@ def add_book(cat, title, author, synopsis, personal_rating, global_rating, in_re
                                    in_read_list=in_read_list)[0]
     b.save()
     return b
+
 
 
 # Start execution here!
