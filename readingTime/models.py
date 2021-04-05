@@ -50,5 +50,16 @@ def update_profile_signal(sender, instance, created, **kwargs):
         Profile.objects.create(user=instance)
     instance.profile.save()
 
+class Contact(models.Model):
+    BookID = models.CharField(max_length=30)
+    BookTitle = models.CharField(max_length=30)
+    Author = models.CharField(max_length=35)
+    UploadImage = models.FileField(upload_to='ContactImg')
+
+    def __str__(self):
+        return self.BookID
+
+    #def save (self,*args,**kwargs):
+      #  return super(Contact,self).save(*args,**kwargs)
 
 
