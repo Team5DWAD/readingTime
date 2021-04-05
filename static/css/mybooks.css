@@ -1,0 +1,36 @@
+
+div.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+}
+h1 {text-align: center; width: 100%}
+h3 {padding-left: 20px;}
+
+table, th, td {
+  border: 5px solid black;
+  border-collapse: collapse;
+}
+
+div.grid table tr th, div.grid table tr {
+    width: 100px;
+    height: 60px;
+
+}
+
+#readBooks {
+    grid-area: 2/1/10/5;
+}
+
+#readList {
+    grid-template-columns: repeat(1, 1fr);
+
+}
+#readList table tr, #readList table th {
+    margin: 20px;
+    width: 100px;
+    height: 60px;
+}
+#blank{
+    border: 0px;
+}

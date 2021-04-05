@@ -7,6 +7,7 @@ from django.contrib import messages
 from django.urls import reverse
 from readingTime.models import Category, Book, Profile, Contact
 from readingTime.forms import RegisterForm, EditProfileForm, ContactForm
+from populate_readingTime import populate
 
 def home(request):
     category_list = Category.objects.all()
@@ -78,6 +79,17 @@ def book(request, book_title='Default Title'):
                                                             'personal_rating': personal_rating,
                                                             'global_rating': global_rating,
                                                             'in_read_list': in_read_list})
+
+
+def myBooks(request):
+    # Only allows user in if they are logged in
+    if request.user.is_authenticated:
+        return render(request, 'readingTime/myBooks.html')
+
+    else:
+        return redirect('readingTime:signIn')
+
+
 
 def signIn(request):
     # If the user is already logged in (temp -> redirects back to home page)

@@ -1,0 +1,131 @@
+{% extends 'readingTime/base.html' %}
+{% load staticfiles %}
+
+{% block style_css %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/mybooks.css' %}" />
+
+{% endblock %}
+
+<style>
+
+</style>
+
+{% block body_block %}
+<div class="main">
+	<h1>My Books</h1>
+	<br>
+	<div class="grid" style="align: left; padding: 80px 500px 80px 80px;">
+
+
+		<table id="readBooks">
+
+			<tr >
+				<th>Book Name</th>
+				<th>Author</th>
+				<th>Category</th>
+				<th>Personal Rating</th>
+			</tr>
+
+			<tr>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+				<td>4</td>
+
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+				<td>4</td>
+
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+				<td>4</td>
+
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+				<td>4</td>
+
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+				<td>4</td>
+
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+				<td>4</td>
+
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+				<td>4</td>
+
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+				<td>4</td>
+			</tr>
+			<tr>
+
+
+			</tr>
+		</table>
+		<input type="text" id="myText" value="Name of Book" style="grid-column: 2; grid-row:9;"></td>
+		<div id="button" style="grid-column: 4; grid-row:9;"><button onclick="myFunction()"> Add Book </button></div>
+	</div>
+
+
+	<div id="readList" style="padding-top: 100px;">
+		<table style="grid-row: 2">
+			<tr >
+				<th>To Read List</th>
+			</tr>
+
+			<tr >
+				<td>1</td>
+			</tr>
+			<tr >
+				<td>1</td>
+			</tr>
+			<tr >
+				<td>1</td>
+			</tr>
+			<tr >
+				<td>1</td>
+			</tr>
+			<tr >
+				<td>1</td>
+			</tr>
+			<tr >
+				<td>1</td>
+			</tr>
+			<tr >
+				<td>1</td>
+			</tr>
+			<tr >
+				<td>1</td>
+			</tr>
+
+		</table>
+	</div>
+</div>
+{% endblock %}
+
+	
