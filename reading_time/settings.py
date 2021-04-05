@@ -28,7 +28,7 @@ SECRET_KEY = '_@-77zp0gd(&0)*-&u5%wq9#4yz6nv2kwjn5n84hi65##p61$1'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['Team5D.pythonanywhere.com']
 
 
 # Application definition
