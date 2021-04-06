@@ -7,7 +7,7 @@ from django.contrib import messages
 from django.urls import reverse
 from readingTime.models import Category, Book, Profile, Contact
 from readingTime.forms import RegisterForm, EditProfileForm, ContactForm
-from populate_readingTime import populate
+from populate_script import populate
 
 def home(request):
     category_list = Category.objects.all()
